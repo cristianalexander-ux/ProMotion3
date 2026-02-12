@@ -1,0 +1,338 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  color: #e6edf3;
+  background: linear-gradient(180deg, #e70909 0%, #1457a3 60%, #0d77ce 100%);
+  line-height: 1.6;
+}
+
+/* Variables de diseño */
+:root {
+  /* Base */
+  --color-bg-1: #102235;
+  --color-bg-2: #08111B;
+  --color-bg-3: #000000;
+
+  /* Marca */
+  --color-brand: #20456A;
+  --color-brand-dark:Red
+  ;
+
+  /* Texto y estados */
+  --color-text: #e6edf3;
+  --color-muted:#3417b6;
+  --color-border: #f51b1b;
+
+  /* Acciones */
+  --color-accent: #3aa0ff; /* sutil contraste para enlaces */
+  --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  /* Layout */
+  --container-max: 1100px;
+  --gutter: 24px;
+}
+
+/* Utilidades de layout */
+.container {
+  width: min(100% - 2 * var(--gutter), var(--container-max));
+  margin-inline: auto;
+}
+
+
+  /* Header */
+  
+.site-header { background-color: red;
+  background: linear-gradient(180deg, var(--color-brand-dark), var(--color-brand));
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.brand-logo {
+  border-radius: 50%;
+  box-shadow: var(--shadow-soft);
+}
+
+.brand-name {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+/* Nav superior */
+.utility-nav .nav-list {
+  display: flex;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Botones */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+.btn-outline {
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  background: rgba(24, 51, 80, 0.35);
+  backdrop-filter: blur(6px);
+}
+
+.btn-outline:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-soft);
+  background: rgba(32, 69, 106, 0.55);
+}
+
+
+  /* Hero */
+   
+.hero {
+  position: relative;
+  padding: 64px 0 40px;
+  background-image: url("IMAGENES/istockphoto-1615688039-640_adpp_is.mp4") no-repeat center;
+  background-size: cover; 
+  border-bottom: 1px solid var(--color-border);
+
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0; 
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  text-align: center;
+  z-index: 1; 
+}
+
+.hero-title {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  margin: 0;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.hero-subtitle {
+  margin: 10px 0 24px;
+  color: var(--color-muted);
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+}
+
+
+/* Nav principal */
+.primary-nav .nav-primary {
+  display: inline-flex;
+  gap: 18px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-primary a {
+  color: var(--color-text);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+.nav-primary a:hover {
+  background: rgba(32, 69, 106, 0.35);
+  border-color: var(--color-border);
+}
+
+
+  /*  Secciones */
+   
+.section {
+  padding: 48px 0;
+}
+
+.section-title {
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  margin: 0 0 16px;
+}
+
+.section-lead {
+  color: var(--color-muted);
+  max-width: 70ch;
+}
+
+
+   /* Cards */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(24, 51, 80, 0.35), rgba(8, 17, 27, 0.6));
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.card-media {
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.card-body {
+  padding: 18px;
+}
+
+.card-title {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+}
+
+.card-meta {
+  margin: 0 0 8px;
+  color: var(--color-muted);
+}
+
+.card-text {
+  margin: 0 0 12px;
+  color: #cbd5e1;
+}
+
+.card-link {
+  display: inline-block;
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid transparent;
+  transition: border-color 160ms ease, color 160ms ease;
+}
+
+.card-link:hover {
+  color: red;
+  border-color: #66b8ff;
+}
+
+
+  /* Historia / Prototipos */
+ 
+.section-history .story-block + .story-block {
+  margin-top: 24px;
+}
+
+.story-title {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+}
+
+.story-text {
+  color: #cbd5e1;
+  max-width: 75ch;
+}
+
+.prototype-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.prototype-card {
+  background: rgba(16, 34, 53, 0.35);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 14px;
+}
+
+.prototype-title {
+  margin: 0 0 6px;
+  font-weight: 700;
+}
+
+.prototype-text {
+  margin: 0 0 10px;
+  color: var(--color-muted);
+}
+
+
+  /* Footer */
+   
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  background: #08111B;
+}
+
+.footer-content {
+  padding: 18px 0;
+  text-align: center;
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+
+  /* Responsivo */
+    
+@media (max-width: 640px) {
+  .header-bar {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .utility-nav .nav-list {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero {
+    padding: 48px 0 32px;
+  }
+}
